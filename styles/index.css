@@ -1,0 +1,16 @@
+.navegador{
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+}
+.navegador ul{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+.navegador a{
+    list-style: none;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
