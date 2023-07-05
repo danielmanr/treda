@@ -56,7 +56,18 @@ switch($_GET["op"]){
     case "edit":
         try {
             if(isset($_POST['id']) && isset($_POST['Nombre']) && isset($_POST['Fecha_de_apertura'])){
+                
+                $fecha = $_POST['Fecha_de_apertura'];
+                $expresion = '/([3][0,1]|[0-2]\d)-([1][0-2]|[0]\d)-(\d\d\d\d)/';
+                if(preg_match($expresion, $fecha)){
+                    $response = $tiendas->update_tienda($_POST['Nombre'], $fecha, $_POST['id']);
+                    echo json_encode(array("success" => true, "message" => 'Se creo correctamente la tienda'));
+                }else{
+                    echo json_encode(array("success" => false, "message" => 'El formato de fecha es invalido'));
+                }
+                
                 $tiendas->update_tienda($_POST['id'], $_POST['Nombre'], $_POST['Fecha_de_apertura']);
+
             }
         } catch (Exception $e) {
             echo json_encode(array("success" => false, "message" => $e));

@@ -62,20 +62,21 @@ $(document).ready(function () {
 
     function editar_tienda(){
         id = tiendaId;
-        let parametros = {"id": edit}
+        let nombre = document.getElementById('nombreTienda').value;
+        let fecha_aux = document.getElementById('fechaApertura').value.split("-");
+        let fecha = `${fecha_aux[2]}-${fecha_aux[1]}-${fecha_aux[0]}`;
+        let parametros = {"id": id,"Nombre": nombre, "Fecha_de apertura": fecha};
         $.ajax({
             data: parametros,
-            url: '../controller/TiendaController.php?op=obtener',
+            url: '../controller/TiendaController.php?op=edit',
             type: 'POST',
             success: function(res){
-                tiendaForm.style.display = "block";
-                document.getElementById("guardar_tienda").value = "editar";
-                document.getElementById("guardar_tienda").innerHTML = 'Editar';
-
-                let response = JSON.parse(res);
-                document.getElementById("nombreTienda").value = response.Nombre;
-                document.getElementById("fechaApertura").value = response.Fecha_de_apertura;
-                tiendaId = response.ID;
+                res = JSON.parse(res);
+                if(res.success != true){
+                    alert(res.message);
+                } else {
+                    document.location.reload();
+                }
         }})
     }
 
@@ -100,7 +101,7 @@ $(document).ready(function () {
                     editarBtn.innerText = "Editar";
                     editarBtn.setAttribute('class', 'btn btn-warning btn-sm');
                     editarBtn.addEventListener('click', async () => {
-                        obtener_tienda(response.ID);
+                       obtener_tienda(response.ID);
                     });
 
                     let eliminarBtn = document.createElement('button');

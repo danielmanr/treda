@@ -44,14 +44,16 @@
            
         }
 
-        public function update_tienda($Nombre, $Fecha_de_apertura){
+        public function update_tienda($Nombre, $Fecha_de_apertura,$id){
             parent::conectar();
             try{
+                $fecha = date("Y-m-d", strtotime($Fecha_de_apertura));
                 $sql = "UPDATE tienda SET Nombre = ?, Fecha_de_apertura = ?
-                WHERE Id = ?";
+                WHERE ID = ?";
                 $consulta = $this->conexion->prepare($sql);
                 $consulta->bindValue(1, $Nombre);
-                $consulta->bindValue(2, $Fecha_de_apertura);
+                $consulta->bindValue(2, $fecha);
+                $consulta->bindValue(3, $id);
                 $consulta->execute();
                 return $consulta->fetchAll(PDO::FETCH_ASSOC);
             }catch(PDOException $e){

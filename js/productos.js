@@ -23,24 +23,20 @@ $(document).ready(function () {
         }})
     }
 
-    function crear_producto(){
-        let nombre = document.getElementById('nombrepoducto').value;
-        let sku = document.getElementById('skuPoducto').value;
-        let descripcion = document.getElementById('descripcionProducto').value;
-        let valor = document.getElementById('valorProducto').value;
-        let tienda = document.getElementById('tienda-anadir').value;
-        let imagen = document.getElementById('imagenProducto').value;
-
-        let parametros = {"Nombre": nombre, "SKU": sku, "Descripcion": descripcion, "Valor": valor, "Tienda": tienda, "Imagen": imagen};
+    function crear_producto() {
+        let formData = new FormData(document.getElementById('form-product'));
         $.ajax({
-            data: parametros,
-            url: '../controller/ProductoController.php?op=add',
-            type: 'POST',
-            success: function(res){
-                document.location.reload();
-        }})
-    }  
-
+          data: formData,
+          url: '../controller/ProductoController.php?op=add',
+          type: 'POST',
+          processData: false,
+          contentType: false,
+          success: function(res) {
+            // document.location.reload();
+          }
+        });
+    }
+    
     function mostrar_producto(){
         $.ajax({
             url: '../controller/ProductoController.php?op=listar',

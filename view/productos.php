@@ -29,32 +29,28 @@
             </tr>
         </thead>
     </table>
-    <form enctype="multipart/form-data">
+    <form enctype="multipart/form-data" method="POST" id="form-product">
         <h4 Id="description-table">Crear producto</h4>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombrepoducto" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">SKU</label>
-            <input type="number" class="form-control" id="skuPoducto"> 
+            <input type="text" class="form-control" id="nombreproducto" aria-describedby="emailHelp" name="nombreproducto">
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Descripción</label>
-            <input type="text" class="form-control" id="descripcionProducto" aria-describedby="emailHelp">
+            <input type="text" class="form-control" id="descripcionProducto" name="descripcionProducto" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Valor</label>
-            <input type="number" class="form-control" id="valorProducto" aria-describedby="emailHelp">
+            <input type="number" class="form-control" id="valorProducto" name="valorProducto" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Tienda</label>
-            <select class="form-select" name="tienda" id="tienda-anadir">sdfsdf</select>
+            <select class="form-select" id="tienda-anadir" name="tiendaAnadir"></select>
 
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Imagen</label>
-            <input type="file" class="form-control" id="imagenProducto" aria-describedby="emailHelp">
+            <input type="file" class="form-control" id="imagenProducto" name="imagenProducto" aria-describedby="emailHelp">
         </div>
         <input type="button" class="btn btn-success" id="guardar-producto" value="Crear"></input>
     </form>

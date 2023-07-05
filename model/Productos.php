@@ -44,17 +44,16 @@ class Productos extends Conexion{
         }
     }
 
-    public function insert_producto($Nombre, $SKU, $descripcion, $valor, $tienda, $imagen){
+    public function insert_producto($Nombre, $descripcion, $valor, $tienda, $imagen){
         try {
             parent::conectar();
-            $sql = "INSERT INTO producto (Nombre, SKU, Descripcion, Valor, Tienda, Imagen) VALUES (?, ?, ?, ?, ?, ?);";
+            $sql = "INSERT INTO producto (Nombre, Descripcion, Valor, Tienda, Imagen) VALUES (?, ?, ?, ?, ?);";
             $consulta = $this->conexion->prepare($sql);
             $consulta->bindValue(1, $Nombre);
-            $consulta->bindValue(2, $SKU);
-            $consulta->bindValue(3, $descripcion);
-            $consulta->bindValue(4, $valor);
-            $consulta->bindValue(5, $tienda);
-            $consulta->bindValue(6, $imagen);
+            $consulta->bindValue(2, $descripcion);
+            $consulta->bindValue(3, $valor);
+            $consulta->bindValue(4, $tienda);
+            $consulta->bindValue(5, $imagen);
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
