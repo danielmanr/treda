@@ -3,7 +3,7 @@ $(document).ready(function () {
 
     function load_tienda(){
         $.ajax({
-            url: '../controller/tienda_controller.php?op=info',
+            url: '../controller/TiendaController.php?op=info',
             type: 'POST',
         })
         .done(function(res){
@@ -16,7 +16,7 @@ $(document).ready(function () {
         let parametros = {"sku": id};
         $.ajax({
             data: parametros,
-            url: '../controller/producto_controller.php?op=eliminar',
+            url: '../controller/ProductoController.php?op=eliminar',
             type: 'POST',
             success: function(){
                 document.location.reload();
@@ -34,7 +34,7 @@ $(document).ready(function () {
         let parametros = {"Nombre": nombre, "SKU": sku, "Descripcion": descripcion, "Valor": valor, "Tienda": tienda, "Imagen": imagen};
         $.ajax({
             data: parametros,
-            url: '../controller/producto_controller.php?op=add',
+            url: '../controller/ProductoController.php?op=add',
             type: 'POST',
             success: function(res){
                 document.location.reload();
@@ -43,7 +43,7 @@ $(document).ready(function () {
 
     function mostrar_producto(){
         $.ajax({
-            url: '../controller/producto_controller.php?op=listar',
+            url: '../controller/ProductoController.php?op=listar',
             type: 'GET',
             dataType: 'json',
             success: function(res){
@@ -73,7 +73,7 @@ $(document).ready(function () {
     function mostrar_producto_por_id(id){
         $.ajax({
             data: {"id": id},
-            url: '../controller/producto_controller.php?op=listarTienda',
+            url: '../controller/ProductoController.php?op=listarTienda',
             type: 'POST',
             dataType: 'json',
             success: function(res){
