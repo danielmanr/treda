@@ -55,8 +55,7 @@ switch($_GET["op"]){
 
     case "edit":
         try {
-            if(isset($_POST['id']) && isset($_POST['Nombre']) && isset($_POST['Fecha_de_apertura'])){
-                
+            if(isset($_POST['id']) && isset($_POST['Nombre']) && isset($_POST['Fecha_de_apertura'])){ 
                 $fecha = $_POST['Fecha_de_apertura'];
                 $expresion = '/([3][0,1]|[0-2]\d)-([1][0-2]|[0]\d)-(\d\d\d\d)/';
                 if(preg_match($expresion, $fecha)){

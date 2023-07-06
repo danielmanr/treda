@@ -16,8 +16,10 @@
     <?php
     include_once("template/header.php");
     ?>
+    <button id="abrir_producto" type="button" class="btn btn-success">Crear Producto</button>
     <select class="form-select" name="tienda" id="select_list"></select>
     <table class="table table-striped-columns text-center" id="table-producto">
+    
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -29,19 +31,20 @@
             </tr>
         </thead>
     </table>
+    
     <form enctype="multipart/form-data" method="POST" id="form-product">
         <h4 Id="description-table">Crear producto</h4>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombreproducto" aria-describedby="emailHelp" name="nombreproducto">
+            <input type="text" class="form-control" id="nombreproducto" aria-describedby="emailHelp" name="nombreproducto" required>
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Descripción</label>
-            <input type="text" class="form-control" id="descripcionProducto" name="descripcionProducto" aria-describedby="emailHelp">
+            <input type="text" class="form-control" id="descripcionProducto" name="descripcionProducto" aria-describedby="emailHelp" required>
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Valor</label>
-            <input type="number" class="form-control" id="valorProducto" name="valorProducto" aria-describedby="emailHelp">
+            <input type="number" class="form-control" id="valorProducto" name="valorProducto" aria-describedby="emailHelp" required>
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Tienda</label>
@@ -50,7 +53,7 @@
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Imagen</label>
-            <input type="file" class="form-control" id="imagenProducto" name="imagenProducto" aria-describedby="emailHelp">
+            <input type="file" class="form-control" id="imagenProducto" name="imagenProducto" aria-describedby="emailHelp" required>
         </div>
         <input type="button" class="btn btn-success" id="guardar-producto" value="Crear"></input>
     </form>

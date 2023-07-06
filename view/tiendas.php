@@ -27,16 +27,16 @@
         </thead>
     </table>      
     <form id="tienda_form">
-        <h4 Id="description-table"></h4>
+        <h4 id="description-table"></h4>
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombreTienda" aria-describedby="emailHelp">
+            <label for="nombreTienda" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombreTienda" aria-describedby="emailHelp" required>
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">fecha de apertura</label>
-            <input type="date" class="form-control" id="fechaApertura">
+            <label for="fechaApertura" class="form-label">Fecha de apertura</label>
+            <input type="date" class="form-control" id="fechaApertura" required>
         </div>
-        <input type="button" class="btn btn-success" id="guardar_tienda" value=""></input>
+        <input type="submit" class="btn btn-success" id="guardar_tienda" value="Guardar">
     </form>
 
         <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>

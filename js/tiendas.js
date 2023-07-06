@@ -21,24 +21,27 @@ $(document).ready(function () {
     function crear_tienda(){
         let nombre = document.getElementById('nombreTienda').value;
         let fecha_aux = document.getElementById('fechaApertura').value.split("-");
-        let fecha = `${fecha_aux[2]}-${fecha_aux[1]}-${fecha_aux[0]}`;
-        let parametros = {"Nombre": nombre, "Fecha_de apertura": fecha};
-        console.log(parametros)
-        $.ajax({
-            data: parametros,
-            url: '../controller/TiendaController.php?op=add',
-            type: 'POST',
-            success: function(res){
-                res = JSON.parse(res);
-                if(res.success != true){
-                    alert(res.message);
-                } else {
-                    document.location.reload();
-                }
+        if(nombre === '' || fecha_aux === ''){
+            alert('Por favor llenar todos los campos');
+        }else{
 
-                
-
-        }})
+            let fecha = `${fecha_aux[2]}-${fecha_aux[1]}-${fecha_aux[0]}`;
+            let parametros = {"Nombre": nombre, "Fecha_de apertura": fecha};
+            console.log(parametros)
+            $.ajax({
+                data: parametros,
+                url: '../controller/TiendaController.php?op=add',
+                type: 'POST',
+                success: function(res){
+                    res = JSON.parse(res);
+                    if(res.success != true){
+                        alert(res.message);
+                    } else {
+                        document.location.reload();
+                    }
+            }})
+        }
+        
     }
 
     function obtener_tienda(id){
@@ -64,20 +67,26 @@ $(document).ready(function () {
         id = tiendaId;
         let nombre = document.getElementById('nombreTienda').value;
         let fecha_aux = document.getElementById('fechaApertura').value.split("-");
-        let fecha = `${fecha_aux[2]}-${fecha_aux[1]}-${fecha_aux[0]}`;
-        let parametros = {"id": id,"Nombre": nombre, "Fecha_de apertura": fecha};
-        $.ajax({
-            data: parametros,
-            url: '../controller/TiendaController.php?op=edit',
-            type: 'POST',
-            success: function(res){
-                res = JSON.parse(res);
-                if(res.success != true){
-                    alert(res.message);
-                } else {
-                    document.location.reload();
-                }
-        }})
+        if(nombre === '' || fecha_aux === ''){
+            alert("Por favor llenar todos los campos");
+
+        }else{
+            let fecha = `${fecha_aux[2]}-${fecha_aux[1]}-${fecha_aux[0]}`;
+            let parametros = {"id": id,"Nombre": nombre, "Fecha_de apertura": fecha};
+            $.ajax({
+                data: parametros,
+                url: '../controller/TiendaController.php?op=edit',
+                type: 'POST',
+                success: function(res){
+                    res = JSON.parse(res);
+                    if(res.success != true){
+                        alert(res.message);
+                    } else {
+                        document.location.reload();
+                    }
+            }})
+        }
+        
     }
 
     // Función que hace una petición al servidor donde obtiene todas las tiendas y genera una tabla a partir de los datos
@@ -127,7 +136,6 @@ $(document).ready(function () {
             return crear_tienda();
         } 
         return editar_tienda()
-
         
     });
 
